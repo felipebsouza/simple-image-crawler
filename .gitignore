@@ -1,0 +1,17 @@
+# Dependency directory
+node_modules/
+
+# Editors
+.idea
+*.iml
+**/.vs
+**/.vscode/*
+!**/.vscode/tasks.json
+!**/.vscode/settings.template.json
+!**/.vscode/launch.template.json
+!**/.vscode/extensions.json
+
+# OS metadata
+.DS_Store
+Thumbs.db
+.vercel
