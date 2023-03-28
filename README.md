@@ -25,7 +25,7 @@ Project should start and crawling service should be available locally at: http:/
 ## Crawl a page
 ### Parameters
 
-Send a GET to http://localhost:3000/api/handler passing the following parameters:
+Send a POST to http://localhost:3000/api/handler passing the following parameters:
 - **url**: page URL, HTML encoded, to be crawled and parsed.
   
 - **token**: credential key set in the **AUTH_TOKEN** environment variable. Locally, that token is set in the **.env** file, while in other environments it is set directly in the hosting environment.
@@ -34,7 +34,7 @@ Send a GET to http://localhost:3000/api/handler passing the following parameters
 Crawling https://www.hello.com page:
 
 ### Request
-GET http://localhost:3000/api/handler?url=http%3A%2F%2Fwww.hello.com&token=b5hAxd2vXzbINBz
+curl -X POST -H "Content-Type: application/json" -d '{"url": "https://www.hello.com", "token": "b5hAxd2vXzbINBz" }' http://localhost:3000/api/handler 
 
 ### Response
 ```
@@ -43,10 +43,10 @@ GET http://localhost:3000/api/handler?url=http%3A%2F%2Fwww.hello.com&token=b5hAx
     "message": "",
     "data": {
         "images": [
-            "/images/branding/googlelogo/1x/googlelogo_white_background_color_272x92dp.png",
+            "/img/hello-logo.png",
             "/textinputassistant/tia.png"
         ],
-        "wordCount": 157
+        "wordCount": 77
     }
 }
 ```

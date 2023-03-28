@@ -14,17 +14,16 @@ async function isValidAuthToken(clientToken: string | string[]) {
 }
 
 export default async function handler(request: VercelRequest, response: VercelResponse) {
-    const token = request.query.token?.toString();
-    const url = request.query.url?.toString();
+    const { url, token } = request.body as { url?: string; token?: string } || {};
 
     if (!url) {
-        let apiResponse: ApiResponse = { success: false, message: 'Missing "url" query parameter'};
+        let apiResponse: ApiResponse = { success: false, message: 'Missing "url" parameter in the body.'};
         response.status(400).send(apiResponse);
         return;
     }
 
     if (!token) {
-        let apiResponse: ApiResponse = { success: false, message: 'Missing "token" query parameter'};
+        let apiResponse: ApiResponse = { success: false, message: 'Missing "token" parameter in the body.'};
         response.status(400).send(apiResponse);
         return;
     }
