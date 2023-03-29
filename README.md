@@ -50,10 +50,51 @@ curl -X POST -H "Content-Type: application/json" -d '{"url": "https://www.hello.
     "message": "",
     "data": {
         "images": [
-            "/img/hello-logo.png",
-            "/textinputassistant/tia.png"
+            "https://www.hello.com/img/hello-logo.png"
         ],
-        "wordCount": 77
+        "wordCount": 77,
+        "mostFrequentWords": [
+            {
+                "word": "you",
+                "count": 6
+            },
+            {
+                "word": "to",
+                "count": 5
+            },
+            {
+                "word": "we",
+                "count": 4
+            },
+            {
+                "word": "s",
+                "count": 3
+            },
+            {
+                "word": "hello",
+                "count": 3
+            },
+            {
+                "word": "it",
+                "count": 2
+            },
+            {
+                "word": "launch",
+                "count": 2
+            },
+            {
+                "word": "have",
+                "count": 2
+            },
+            {
+                "word": "a",
+                "count": 2
+            },
+            {
+                "word": "thank",
+                "count": 2
+            }
+        ]
     }
 }
 ```
