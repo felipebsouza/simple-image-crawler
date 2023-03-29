@@ -1,6 +1,6 @@
-import { HttpClient } from "../../crawler/http-client";
-import { PageParser, PageParseResult } from "../../crawler/page-parser";
-import { Crawler } from "../../crawler/crawler";
+import { HttpClient } from "../../src/lib/crawler/http-client";
+import { PageParser, PageParseResult } from "../../src/lib/crawler/page-parser";
+import { Crawler } from "../../src/lib/crawler/crawler";
 
 describe('Crawler', () => {
     const mockedSiteUrl = 'https://site.com';

@@ -1,4 +1,4 @@
-import { PageParser } from "../../crawler/page-parser";
+import { PageParser } from "../../src/lib/crawler/page-parser";
 
 describe('PageParser', () => {
     describe('parse', () => {

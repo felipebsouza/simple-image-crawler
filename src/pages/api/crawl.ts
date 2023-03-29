@@ -1,7 +1,7 @@
-import type { VercelRequest, VercelResponse } from '@vercel/node';
-import { Crawler, CrawlerResult } from '../crawler/crawler';
-import { HttpClient } from '../crawler/http-client';
-import { PageParser, PageParseResult } from '../crawler/page-parser';
+import { Crawler } from '@/lib/crawler/crawler';
+import { HttpClient } from '@/lib/crawler/http-client';
+import { PageParser, PageParseResult } from '@/lib/crawler/page-parser';
+import type { NextApiRequest, NextApiResponse } from 'next'
 
 export interface ApiResponse {
     success: boolean;
@@ -13,7 +13,7 @@ async function isValidAuthToken(clientToken: string | string[]) {
     return clientToken === process.env.AUTH_TOKEN;
 }
 
-export default async function handler(request: VercelRequest, response: VercelResponse) {
+export default async function handler(request: NextApiRequest, response: NextApiResponse<ApiResponse>) {
     const { url, token } = request.body as { url?: string; token?: string } || {};
 
     if (!url) {
@@ -43,9 +43,8 @@ export default async function handler(request: VercelRequest, response: VercelRe
         const crawlerResult = await crawler.crawl(url);
         const apiResponse: ApiResponse = { success: true, message: '', data: crawlerResult };
         response.status(200).json(apiResponse);
-
     } catch(error) {
-        const apiResponse: ApiResponse = { success: false, message: error.message };
+        const apiResponse: ApiResponse = { success: false, message: (error as Error).message };
         response.status(500).json(apiResponse);
     }
 }

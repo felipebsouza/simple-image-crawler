@@ -12,6 +12,6 @@ export class Crawler {
 
     async crawl(url: string): Promise<PageParseResult> {
         const response = await this.httpClient.get(url);
-        return this.pageParser.parse(response.data);
+        return this.pageParser.parse(response.data, url);
     }
 }
